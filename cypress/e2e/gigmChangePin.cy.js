@@ -16,8 +16,8 @@ describe('Change_Auth_Credentials', ()=> {
             Pn.setPassword(data.password1);
             Pn.clickBtn();
             Pn.Wait();
-            Pn.AccountAvata2()
-            Pn.ChangeWalletPin()
+            Pn.AccountAvata2();
+            Pn.ChangeWalletPin();
 
 
 

@@ -26,6 +26,7 @@ require('cypress-xpath')
 
 
 import 'cypress-mochawesome-reporter/register';
+import '@shelex/cypress-allure-plugin';
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
