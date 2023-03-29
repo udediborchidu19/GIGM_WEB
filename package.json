@@ -6,7 +6,7 @@
   "scripts": {
     "cy:run": "cypress run --env allure=true --headed",
     "allure:report": "allure generate allure-results--clean -o allure-report",
-    "test": "npm run cy:run || npm install cypress || npm run posttest",
+    "test": "npm run cy:run || npm install cypress --save-dev || npm run posttest",
     "posttest": "npm run allure:report"
   },
   "author": "Favour Udedibor",
