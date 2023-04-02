@@ -26,3 +26,5 @@
 
 /// <reference types="cypress-xpath" />
 /// <reference types="@shelex/cypress-allure-plugin" />
+
+import 'cypress-mailosaur'
