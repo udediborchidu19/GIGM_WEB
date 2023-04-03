@@ -18,13 +18,16 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'run test'
-    continueOnError: true
+    customCommand: 'cy:run'
+    # continueOnError: true
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install'
+    
+
+# - script: |
+#     npm install
+#     npm run build
+#   displayName: 'npm install'
+
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
