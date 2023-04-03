@@ -18,7 +18,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    customCommand: 'cy:run'
+    customCommand: 'run test'
     # continueOnError: true
 
     
