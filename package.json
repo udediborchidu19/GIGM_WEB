@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "allure:report": "allure generate allure-results--clean -o allure-report",
-    "test": "npm run cy:run || npm install cypress --save-dev || npm run posttest || cypress run --env allure=true --headed",
-    "cy:run": "cypress run --env allure=true --headed",
-    "posttest": "npm run allure:report"
+    "test": " npm install cypress --save-dev || cypress run --env allure=true --headed"
+    
   },
   "author": "Favour Udedibor",
   "license": "ISC",
