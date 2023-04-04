@@ -21,10 +21,13 @@ steps:
     customCommand: 'run test'
     continueOnError: true
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install'
+    
+
+# - script: |
+#     npm install
+#     npm run build
+#   displayName: 'npm install'
+
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
