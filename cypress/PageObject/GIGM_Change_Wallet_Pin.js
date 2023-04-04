@@ -90,7 +90,12 @@ class Change_Wallet_Pin {
             { 
                sentTo: testEmail,
                subject: 'OTP',   
-          }).then(res => {   
+               
+          },
+          {
+            // Find messages received since Jan 1st 2020. This will be slow!
+             receivedAfter: new Date('2020-01-01T00:00:00Z')
+        }).then(res => {   
             cy.log(res.Object)
             cy.request({
                 method : 'GET',
@@ -114,10 +119,14 @@ class Change_Wallet_Pin {
 
                  // Enter OTP in application
                  cy.xpath('//*[@id="tabContent3"]/div/div[2]/div[2]/div/div/div[3]/div/div/div[1]/input[1]').type(otp, {paste: true});
-                //  cy.xpath('//*[@id="tabContent3"]/div/div[2]/div[2]/div/div/div[3]/div/div/div[1]/input[2]').type(otp, {force:true});
+                 cy.xpath('//*[@id="tabContent3"]/div/div[2]/div[2]/div/div/div[3]/div/div/div[2]/div/div/button').click({force:true});
+                 cy.xpath('//*[@id="tabContent3"]/div/div[4]/div[1]/div[2]/div/div[1]/div/input').type('1111', {force:true});
+                 cy.xpath('//*[@id="tabContent3"]/div/div[4]/div[1]/div[2]/div/div[2]/div/input').type('1111', {force:true});
+                 cy.xpath('//*[@id="tabContent3"]/div/div[4]/div[2]/div/div/button').click({force:true});
+                //  cy.get('.alert').should('contains.text', 'SUCCESS');
+                
             });
-                    //   // Extract OTP from email text
-                    //   const otp = /OTP is (\d+)/.exec(email.text.body.items)[1];
+                    
 
                      
                     
