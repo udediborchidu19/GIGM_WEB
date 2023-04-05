@@ -20,7 +20,7 @@ module.exports = defineConfig({
 
       "reporter" : "junit",
       "reporterOptions" : {
-        "mochaFile" : "result/my-test-output-[hash].xml"
+        "mochaFile" : "/cypress/reports/html/index.html"
       }
   }
 
