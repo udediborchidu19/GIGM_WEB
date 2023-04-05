@@ -16,7 +16,12 @@ module.exports = defineConfig({
 
     env: {
       allureReuseAfterSpec: true,
-      "MAILOSAUR_API_KEY": 'EUafD1OPlOHePJDkRxXZtbUduYGQai45'
+      "MAILOSAUR_API_KEY": 'EUafD1OPlOHePJDkRxXZtbUduYGQai45',
+
+      "reporter" : "junit",
+      "reporterOptions" : {
+        "mochaFile" : "result/my-test-output-[hash].xml"
+      }
   }
 
     
