@@ -1,4 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Tue Mar 28 16:21:04 WAT 2023","Tue Mar 28 16:21:04 WAT 2023","8","","LoginT","","","","BookAseat",""
-"passed","Wed Mar 29 12:10:24 WAT 2023","Wed Mar 29 12:11:02 WAT 2023","38279","","LoginT","","","","BookAseat",""
-"passed","Wed Mar 29 12:09:24 WAT 2023","Wed Mar 29 12:09:42 WAT 2023","18212","","Change_Auth_Credentials","","","","ChangePin",""
