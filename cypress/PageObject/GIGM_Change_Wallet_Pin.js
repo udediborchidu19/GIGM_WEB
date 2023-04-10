@@ -123,7 +123,7 @@ class Change_Wallet_Pin {
                  cy.xpath('//*[@id="tabContent3"]/div/div[4]/div[1]/div[2]/div/div[1]/div/input').type('1111', {force:true});
                  cy.xpath('//*[@id="tabContent3"]/div/div[4]/div[1]/div[2]/div/div[2]/div/input').type('1111', {force:true});
                  cy.xpath('//*[@id="tabContent3"]/div/div[4]/div[2]/div/div/button').click({force:true});
-                //  cy.get('.alert').should('contains.text', 'SUCCESS');
+                 cy.get('.alert').should('contains.text', 'SUCCESS');
                 
             });
                     
