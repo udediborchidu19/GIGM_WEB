@@ -79,11 +79,11 @@ class Change_Wallet_Pin {
     EnterOTP()
     {
 
-        const serverId = '4sxb33qk'; // Replace SERVER_ID with an actual Mailosaur Server ID
-        const testEmail = `tune-pan@4sxb33qk.mailosaur.net` ;
-        const token =  'RVVhZkQxT1BsT0hlUEpEa1J4WFp0YlVkdVlHUWFpNDU6';
+        const serverId = 'lmnrfcjr'; // Replace SERVER_ID with an actual Mailosaur Server ID
+        const testEmail = `mysterious-noun@lmnrfcjr.mailosaur.net` ;
+        const token =  'STVWVkJHZHNIS2JKT2EyNUIxSGZIQTEybmxEU1dGeEI6';
      // const apiKey =  'EUafD1OPlOHePJDkRxXZtbUduYGQai45';
-        const server_domain = 'tune-pan@4sxb33qk.mailosaur.net';
+        const server_domain = 'mysterious-noun@lmnrfcjr.mailosaur.net';
 
         cy.mailosaurListMessages( 
              serverId, 
@@ -99,11 +99,11 @@ class Change_Wallet_Pin {
             cy.log(res.Object)
             cy.request({
                 method : 'GET',
-                url : 'https://mailosaur.com/api/messages?server=4sxb33qk&page=&itemsPerPage=&receivedAfter=&dir=',
+                url : 'https://mailosaur.com/api/messages?server=lmnrfcjr&page=&itemsPerPage=&receivedAfter=&dir=',
                 headers:{
-                     'Authorization': 'Basic ' + token,
+                      'Authorization': 'Basic ' + token,
                     "Content-Type" : "application/x-www-form-urlencoded",
-                    "serverId" : "4sxb33qk"
+                    "serverId" : "lmnrfcjr"
                 }      
             }).then((res)=>{
                 expect(res.status).to.eq(200)

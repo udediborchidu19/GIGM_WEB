@@ -16,7 +16,7 @@ module.exports = defineConfig({
 
     env: {
       allureReuseAfterSpec: true,
-      "MAILOSAUR_API_KEY": 'EUafD1OPlOHePJDkRxXZtbUduYGQai45',
+      "MAILOSAUR_API_KEY": 'I5VVBGdsHKbJOa25B1HfHA12nlDSWFxB',
 
       "reporter" : "junit",
       "reporterOptions" : {

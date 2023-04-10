@@ -3,10 +3,10 @@ import Change_Wallet_Pin from "../PageObject/GIGM_Change_Wallet_Pin";
 
 describe('Change_Auth_Credentials', ()=> {
 
-    const serverId = '4sxb33qk'; // Replace SERVER_ID with an actual Mailosaur Server ID
-    const testEmail = `tune-pan@4sxb33qk.mailosaur.net` ;
+    const serverId = 'lmnrfcjr'; // Replace SERVER_ID with an actual Mailosaur Server ID
+    const testEmail = `mysterious-noun@lmnrfcjr.mailosaur.net` ;
     // const apiKey =  'EUafD1OPlOHePJDkRxXZtbUduYGQai45';
-    const server_domain = 'tune-pan@4sxb33qk.mailosaur.net';
+    const server_domain = 'mysterious-noun@lmnrfcjr.mailosaur.net';
     
 
     it('ChangePin', ()=> {
