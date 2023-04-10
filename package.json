@@ -1,0 +1,27 @@
+{
+  "name": "gigm_web_automation_cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "allure:report": "allure generate allure-results--clean -o allure-report",
+    "test": " npm install cypress --save-dev || npx cypress run --browser chrome --spec cypress/e2e/ || npx cypress run --env allure=true --headed",
+    "report" : "npx allure serve"
+    
+  },
+  "author": "Favour Udedibor",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.8.0",
+    "nodemailer": "^6.9.1"
+  },
+  "devDependencies": {
+    "@cypress/xpath": "^2.0.3",
+    "@shelex/cypress-allure-plugin": "^2.37.0",
+    "@types/cypress": "^1.1.3",
+    "cypress-mailosaur": "^2.13.0",
+    "cypress-mochawesome-reporter": "^3.3.0",
+    "cypress-xpath": "^2.0.1",
+    "gmail-tester": "^1.3.8"
+  }
+}
