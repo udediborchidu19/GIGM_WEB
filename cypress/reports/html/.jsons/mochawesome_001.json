@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-04-11T09:57:30.582Z",
+    "end": "2023-04-11T09:57:35.179Z",
+    "duration": 4597,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1159fb68-880d-465f-9c87-0b0d814d3e92",
+      "title": "",
+      "fullFile": "cypress\\e2e\\GetTerminalByCountryCode.cy.js",
+      "file": "cypress\\e2e\\GetTerminalByCountryCode.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "072c9808-5c25-400b-8c86-502e075591fd",
+          "title": "GetTerminalByCC",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "TerminalByCountryCode",
+              "fullTitle": "GetTerminalByCC TerminalByCountryCode",
+              "timedOut": null,
+              "duration": 4479,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.fixture(\"GIGM_Resource\").then(data => {\n  cy.request({\n    method: 'GET',\n    url: data.base_url + '/api/terminals/terminalbycountrycode/NG',\n    headers: {\n      // 'Authorization': 'Bearer' + access_token \n      \"Content-Type\": \"application/x-www-form-urlencoded\"\n    }\n  }).then(res => {\n    expect(res.status).to.eq(200);\n    expect(res.body.Object.Items[42].TerminalName).to.be.eq('Lagos => Jibowu');\n    expect(res.body.Object.Items[42].Latitude).to.be.eq(6.518806);\n    expect(res.body.Object.Items[42].Longitude).to.be.eq(3.367547);\n    expect(res.body.Object.Items[42].TerminalId).to.be.eq(29);\n    expect(res.body.Object.Items).to.be.eq(res.body.Object.Items);\n  }).then(res => {\n    const departureId = res.body.Object.Items[42].TerminalId;\n    cy.log(departureId);\n    cy.request({\n      method: 'GET',\n      url: data.base_url + '/api/routes/terminals/destinations/' + departureId,\n      headers: {\n        // 'Authorization': 'Bearer' + access_token \n        \"Content-Type\": \"application/x-www-form-urlencoded\"\n      }\n    }).then(res => {\n      expect(res.status).to.eq(200);\n      expect(res.body.Object[20].TerminalId).to.be.eq(72);\n      expect(res.body.Object[20].TerminalName).to.be.eq(\"Enugu==>Nsukka\");\n    }).then(res => {\n      // const departureTerId = res.body.Object.Items[42].TerminalId;\n      const destinationTerId = res.body.Object[20].TerminalId;\n      cy.request({\n        method: 'POST',\n        url: data.base_url + '/api/bookings/search',\n        headers: {\n          // 'Authorization': 'Bearer' + access_token \n          \"Content-Type\": \"application/x-www-form-urlencoded\"\n        },\n        body: {\n          \"TripType\": 0,\n          \"DepartureTerminalId\": 29,\n          \"DestinationTerminalId\": destinationTerId,\n          \"DepartureDate\": \"2023-04-14T10:28:30.844Z\",\n          \"ReturnDate\": \"2023-04-01T10:28:30.844Z\",\n          \"NumberOfAdults\": 1,\n          \"NumberOfChildren\": 0,\n          \"BookingType\": 0\n        }\n      }).then(res => {\n        const AvaialableSeat = res.body.Object.Departures[0].AvailableSeats;\n        console.log(AvaialableSeat);\n        // const randomIndex = Math.floor(Math.random() * AvaialableSeat.length);\n        // const randomNumber = AvaialableSeat[randomIndex];\n        // const BookedSeats = res.body.Object.Departures[0].BookedSeats;\n        // cy.log(BookedSeats)\n        // BookedSeats.push(randomNumber);\n        expect(res.status).to.eq(200);\n        expect(res.body.ShortDescription, 'ShortDescription').to.be.eq(\"SUCCESS\");\n        //  expect(randomNumber).to.be.eq(randomNumber);\n        expect(res.body.Object.Departures[0].TripId, 'TripId').to.be.eq(res.body.Object.Departures[0].TripId);\n        expect(res.body.Object.Departures[0].VehicleTripRegistrationId, 'Vehicle Registration ID').to.be.eq(res.body.Object.Departures[0].VehicleTripRegistrationId);\n      }).then(res => {\n        cy.log(res.body);\n        const tripId = res.body.Object.Departures[0].TripId;\n        cy.log(tripId);\n        cy.request({\n          method: 'GET',\n          url: data.base_url + '/api/pickup/points/tripPickupPoints/' + tripId,\n          headers: {\n            'Authorization': 'Bearer ' + access_token,\n            \"Content-Type\": \"application/x-www-form-urlencoded\"\n          }\n        }).then(res => {\n          expect(res.status).to.eq(200);\n          // expect(res.body.Object[20].TerminalId).to.be.eq(72)\n          // expect(res.body.Object[20].TerminalName).to.be.eq(\"Enugu==>Nsukka\")\n        }).then(res => {\n          cy.request({\n            method: 'GET',\n            url: data.base_url + '/api/bookings/ActivePaymentGatewayWallet',\n            headers: {\n              'Authorization': 'Bearer ' + access_token,\n              \"Content-Type\": \"application/x-www-form-urlencoded\"\n            }\n          }).then(res => {\n            expect(res.status, 'Status').to.eq(200);\n            expect(res.body.Object[0].WalletStatus, 'wallet status').to.be.true;\n          });\n        });\n      });\n    });\n  });\n});",
+              "err": {},
+              "uuid": "43df1cbb-acfd-4738-b512-25fd60f8e762",
+              "parentUUID": "072c9808-5c25-400b-8c86-502e075591fd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "43df1cbb-acfd-4738-b512-25fd60f8e762"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4479,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

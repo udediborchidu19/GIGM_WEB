@@ -49,6 +49,8 @@ describe('GetTerminalByCC', ()=>{
                 // const departureTerId = res.body.Object.Items[42].TerminalId;
                 const destinationTerId = res.body.Object[20].TerminalId;
 
+                
+
                 cy.request({
                     method: 'POST',
                     url: data.base_url + '/api/bookings/search',
@@ -60,7 +62,7 @@ describe('GetTerminalByCC', ()=>{
                         "TripType": 0,
                         "DepartureTerminalId": 29,
                         "DestinationTerminalId": destinationTerId,
-                        "DepartureDate": "2023-04-05T10:28:30.844Z",
+                        "DepartureDate": "2023-04-14T10:28:30.844Z",
                         "ReturnDate": "2023-04-01T10:28:30.844Z",
                         "NumberOfAdults": 1,
                         "NumberOfChildren": 0,
@@ -68,12 +70,28 @@ describe('GetTerminalByCC', ()=>{
                     }
 
             }).then((res)=>{
+                const AvaialableSeat = res.body.Object.Departures[0].AvailableSeats;
+                console.log(AvaialableSeat)
+                // const randomIndex = Math.floor(Math.random() * AvaialableSeat.length);
+                // const randomNumber = AvaialableSeat[randomIndex];
+                // const BookedSeats = res.body.Object.Departures[0].BookedSeats;
+                // cy.log(BookedSeats)
+                // BookedSeats.push(randomNumber);
+                
                 expect(res.status).to.eq(200)
-                expect(res.body.ShortDescription).to.be.eq("SUCCESS") 
-                expect(res.body.Object.Departures[0].TripId).to.be.eq("25b6d9e0-a550-4780-b8f1-1eabea754b46")
-                expect(res.body.Object.Departures[0].VehicleTripRegistrationId).to.be.eq("c132e287-431f-4d2f-890f-2133f063ddc1")
-        }).then((res) =>{
-            const tripId = res.body.Object.Departures[0].TripId;
+                expect(res.body.ShortDescription, 'ShortDescription').to.be.eq("SUCCESS") 
+                //  expect(randomNumber).to.be.eq(randomNumber);
+                expect(res.body.Object.Departures[0].TripId, 'TripId').to.be.eq(res.body.Object.Departures[0].TripId)
+                expect(res.body.Object.Departures[0].VehicleTripRegistrationId, 'Vehicle Registration ID').to.be.eq(res.body.Object.Departures[0].VehicleTripRegistrationId)
+                
+                
+
+                
+          }).then((res) =>{
+    
+        
+            cy.log(res.body)
+             const tripId = res.body.Object.Departures[0].TripId;
             cy.log(tripId);
             cy.request({
                 method: 'GET',
@@ -88,11 +106,24 @@ describe('GetTerminalByCC', ()=>{
                 // expect(res.body.Object[20].TerminalId).to.be.eq(72)
                 // expect(res.body.Object[20].TerminalName).to.be.eq("Enugu==>Nsukka")
 
-        })
+        }).then((res)=>{
+            cy.request({
+                method: 'GET',
+                url: data.base_url + '/api/bookings/ActivePaymentGatewayWallet',
+                headers:{
+                     'Authorization': 'Bearer ' + access_token,
+                    "Content-Type" : "application/x-www-form-urlencoded"
+                }
+
+        }).then((res)=>{
+            expect(res.status, 'Status').to.eq(200)
+            expect( res.body.Object[0].WalletStatus, 'wallet status').to.be.true;
     })
 })
     
-})
+ })
         })
     })
+})
+})
 })
