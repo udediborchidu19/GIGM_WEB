@@ -3,7 +3,7 @@
 describe('GetTerminalByCC', ()=>{
 
 
-    let access_token = "k_4K_WCVSNhzd772SfFNrnMBJugn0HKsmjFGGqyAWbNYrslujhTAlqXcKRwdWZD7_GLBMrZFlJrVeBakbB68oKgPmGfiBhgFJkQsdxUICddKOJlZ8bsBgI_3YveuUiwfibZfYeKwr5Zw0EN7IguJRpwziaqRt0FA8jk5RkKJgl2ijit1VwQYxoFuaEZ51OJXym-1gvBFT5eu7kuQg_9TRGidV9plq4FTf9ojOQ0lMRzjv69ad41rG5xb53loBX-7wOA7wITZtKZk3dDC0LmcjimJKTo9tCMUl0juii8pQ-Bv2OtnQG8L7DxRMcM0qoOGl0Zj4wJXjlmdPTL9DFIroop7ereamUA6hDIqW8QHZH8KiO0xmUSNplWiILOiAwTBKaLGSBg4tcZhhxLXUlTQRP5sEuvUPccIzgI6hbAVyLuuP6TGU-2V6Ub3TUIrii1N0DZLvcW5CBOPDeA2MTKdgg"
+    let access_token = "5aitR20UnYocZDpalPV5LHRF6BoHCOV28V-hur78g7OSpK1OMlfTX1iGiEWYbPQ0B4MtwXa6IKASyp2qhbJ2reXngdSFh1vKTFCRDryoF0KrB0WE0dZbY6NuBx8l1g0ZonaLvb1i9FyPiLm9IvORdsLdtIH1DSQwGFChTFaU_Z6yeqmvOmMm3vmBH-fL3_mLRwdBl1n54JKDEJ8DsSei-g8m7lmlFTLRb6I0TS_2_1bwq-sX71jvvupOMAdRbv91i2YKfcKb1jnisHoKoufWvQu2gYxaALwq1IkCFMZjWhRP83VSK0RvjGeve0f_vF-c4uM0qGD9su2X88GdEWP6iFcF5smXRqaL9d6xc_2VqOhR3xcsURZArTVqTHERqSzVWbJyayK2IL7ZeelPDUf9NG9h12lEEd6IhOgbblfEleKtFtv8v22bMLHpmbzEiL7WLa_LCWMmz_SNMax_CSZz-Q"
     
     
         it('TerminalByCountryCode', ()=>{
@@ -62,7 +62,7 @@ describe('GetTerminalByCC', ()=>{
                         "TripType": 0,
                         "DepartureTerminalId": 29,
                         "DestinationTerminalId": destinationTerId,
-                        "DepartureDate": "2023-04-14T10:28:30.844Z",
+                        "DepartureDate": "2023-04-16T10:28:30.844Z",
                         "ReturnDate": "2023-04-01T10:28:30.844Z",
                         "NumberOfAdults": 1,
                         "NumberOfChildren": 0,
@@ -140,7 +140,7 @@ describe('GetTerminalByCC', ()=>{
                 "isSub": false,
                 "isSubReturn": false,
                 "Amount": 1,
-                "Email": "udediborchidu@gmail.com",
+                "Email": "calio12120xzz7@yopmail.com",
                 "PhoneNumber": "07012907166",
                 "NextOfKinName": "Femi",
                 "NextOfKinPhone": "08139170223",
@@ -157,13 +157,15 @@ describe('GetTerminalByCC', ()=>{
                 "hasCoupon": false,
                 "IsCrossCountry": false,
                 "VehicleTripRegistrationId": vehicleregID,
-                 "Address": "ererereffdcd",
+                 "Address": "ererereffdcd"
               }
 
 
         }).then((res)=>{
             expect(res.status).to.eq(200)
             expect(res.body.Object.BookingReferenceCode, 'Refrence Code should be').to.eq(res.body.Object.BookingReferenceCode)
+
+
 
         }).then((res)=>{
       
@@ -177,12 +179,23 @@ describe('GetTerminalByCC', ()=>{
                     "Content-Type" : "application/x-www-form-urlencoded",
                 },
                 body:{
-                    "Email": "udediborchidu@gmail.com",
+                    "Email": "calio12120xzz7@yopmail.com",
                     "RefCode": refcode,
-                    "Pin": "2514"
+                    "Pin": "2536"
                    
 
                 }
+
+        }).then((res)=>{
+            const refcode = res.body.Object.BookingReferenceCode
+            const response = res.body.Object.Response
+            const seatNum = res.body.Object.SeatNumber
+            const descrpt = res.body.ShortDescription
+
+            expect(refcode, "Refcode should be").to.be.eq(refcode)
+            expect(response, "Payment is").to.be.eq(response)
+            expect(seatNum, "Seat Number is").to.be.eq(seatNum)
+            expect(descrpt, "Transaction should be").to.be.eq(descrpt)
 
         })
     })
