@@ -7,6 +7,8 @@ class GIGMSignup {
     signupBtn = '//*[@id="root"]/div/div[3]/div[2]/div/div/div/div[6]/div/button';
     sex = '//*[@id="root"]/div/div[3]/div[2]/div/div/div/div[2]/div[2]/div/div/div[1]/div[1]';
     AcceptCookiess = "#rcc-confirm-button";
+    ClickLogInBtn = ".blue-btn-nav";
+    clickLoginBtn2 = 'div[class="signUp-handle"]>div[class="centered"]';
 
 
     EnterEmailAdd() {
@@ -20,6 +22,21 @@ class GIGMSignup {
         }
         
         cy.get(':nth-child(6) > :nth-child(1) > .inputField_Wrap').type(testEmail);
+    }
+
+
+    ClickReg()
+    {
+        cy.xpath('//*[@id="root"]/div/div[4]/div[2]/div/div/div/div[3]/div/p/a').click();
+    }
+
+
+    ClickLogin_SignUp_Btn() {
+        cy.get(this.ClickLogInBtn).click();
+    }
+
+    ClickLogin_SignUp_Btn2() {
+        cy.get(this.clickLoginBtn2).click();
     }
 
     FirstName()
@@ -68,7 +85,7 @@ class GIGMSignup {
     SelSex()
     {
         cy.get('.select__value-container').click({ force: true });
-        cy.get('#react-select-3-option-0').click({ force: true });
+        cy.get('#react-select-17-option-0').click({ force: true });
     }
 
 
@@ -76,7 +93,7 @@ class GIGMSignup {
     {
         cy.get('.col-sm-12 > .Button_Wrap').click({force:true});
         cy.wait(1000)
-        cy.get('.swal2-popup').should('contain.text', 'SUCCESS');
+        cy.get('.rodal-fade-enter > .rodal-dialog > [style="overflow: hidden; height: 500px;"] > .modContainer > .modalTitle').should('contain.text', 'Enter Verification Code');
     }
 
     AcceptCookies() {
