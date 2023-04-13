@@ -6,8 +6,7 @@
   "scripts": {
     "allure:report": "allure generate allure-results--clean -o allure-report",
     "test": "  npx cypress run --env allure=true --headed",
-    "report" : "npx allure serve"
-    
+    "report": "npx allure serve"
   },
   "author": "Favour Udedibor",
   "license": "ISC",
@@ -20,8 +19,10 @@
     "@shelex/cypress-allure-plugin": "^2.37.0",
     "@types/cypress": "^1.1.3",
     "cypress-mailosaur": "^2.13.0",
+    "cypress-mailslurp": "^1.7.0",
     "cypress-mochawesome-reporter": "^3.3.0",
     "cypress-xpath": "^2.0.1",
-    "gmail-tester": "^1.3.8"
+    "gmail-tester": "^1.3.8",
+    "mailslurp-client": "^15.17.0"
   }
 }

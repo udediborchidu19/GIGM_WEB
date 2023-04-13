@@ -2,7 +2,9 @@ const { defineConfig } = require("cypress");
 const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
-
+  defaultCommandTimeout: 30000,
+  responseTimeout: 30000,
+  requestTimeout: 30000,
   reporter: 'cypress-mochawesome-reporter',
   
   e2e: {

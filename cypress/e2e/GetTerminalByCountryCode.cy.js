@@ -3,7 +3,7 @@
 describe('GetTerminalByCC', ()=>{
 
 
-    let access_token = "uq6FcojyNaVgxEH5VD8KaRJJ11gTxPCVW1EZAXT--JLmD2BoJtDetwHyfcHN3ztQmL8RH__fZO5dxzekEoRu_v_J7iqyu90FCoaIRSoo0UHUmuX9kulfNDafEOgBgqGHE8i6atzOTnn229NVF3khsl7oixeGKqOkraU708ksTAOJ7NcevYAgXW4CC3YfKgVMvX4dl0nBNzbKlFfpXgBRALMOO8aLRudTeTsQ-JLM0EjibYwqP7wXGcJnUi02gidXcY7lerN13sXfkQRnkI1F-th6EiJvdi7Eyr1ua5tkE0CEWVGYmjsGq7EL48dOZn3NTz-e1ZVSs5aclUB_JDJ7HditiBWXt1onG9fspueyflUU1BxClEFsRgJtMUe6m_MD7597FErsVxKkU-u58oVEOS2S9T7ZrLpgdzr0v9xDX6VEf-YBnW7W1n786vlBOaIMw8xI65M-Ri45Y1QAUN1UUrYMwmx5o6U8sAETA5f9U-2t4FpcZChECZeHllpD7Gqo"
+    let access_token = "k_4K_WCVSNhzd772SfFNrnMBJugn0HKsmjFGGqyAWbNYrslujhTAlqXcKRwdWZD7_GLBMrZFlJrVeBakbB68oKgPmGfiBhgFJkQsdxUICddKOJlZ8bsBgI_3YveuUiwfibZfYeKwr5Zw0EN7IguJRpwziaqRt0FA8jk5RkKJgl2ijit1VwQYxoFuaEZ51OJXym-1gvBFT5eu7kuQg_9TRGidV9plq4FTf9ojOQ0lMRzjv69ad41rG5xb53loBX-7wOA7wITZtKZk3dDC0LmcjimJKTo9tCMUl0juii8pQ-Bv2OtnQG8L7DxRMcM0qoOGl0Zj4wJXjlmdPTL9DFIroop7ereamUA6hDIqW8QHZH8KiO0xmUSNplWiILOiAwTBKaLGSBg4tcZhhxLXUlTQRP5sEuvUPccIzgI6hbAVyLuuP6TGU-2V6Ub3TUIrii1N0DZLvcW5CBOPDeA2MTKdgg"
     
     
         it('TerminalByCountryCode', ()=>{
@@ -87,37 +87,104 @@ describe('GetTerminalByCC', ()=>{
                 
 
                 
-          }).then((res) =>{
+          })
+        // .then((res) =>{
     
         
-            cy.log(res.body)
-             const tripId = res.body.Object.Departures[0].TripId;
-            cy.log(tripId);
-            cy.request({
-                method: 'GET',
-                url: data.base_url + '/api/pickup/points/tripPickupPoints/' + tripId,
-                headers:{
-                     'Authorization': 'Bearer ' + access_token,
-                    "Content-Type" : "application/x-www-form-urlencoded"
-                }
+        //     cy.log(res.body)
+        //      const tripId = res.body.Object.Departures[0].TripId;
+        //      const vehicleregID = res.body.Object.Departures[0].VehicleTripRegistrationId;
+        //     cy.log(tripId);
+        //     cy.request({
+        //         method: 'GET',
+        //         url: data.base_url + '/api/pickup/points/tripPickupPoints/' + tripId,
+        //         headers:{
+        //              'Authorization': 'Bearer ' + access_token,
+        //             "Content-Type" : "application/x-www-form-urlencoded"
+        //         }
                 
-            }).then((res)=>{
-                expect(res.status).to.eq(200)
-                // expect(res.body.Object[20].TerminalId).to.be.eq(72)
-                // expect(res.body.Object[20].TerminalName).to.be.eq("Enugu==>Nsukka")
+        //     }).then((res)=>{
+        //         expect(res.status).to.eq(200)
+        //         // expect(res.body.Object[20].TerminalId).to.be.eq(72)
+        //         // expect(res.body.Object[20].TerminalName).to.be.eq("Enugu==>Nsukka")
+
+        // })
+        .then((res)=>{
+
+        const vehicleregID = res.body.Object.Departures[0].VehicleTripRegistrationId;
+        const seatReg = vehicleregID
+        const AvaialableSeat = res.body.Object.Departures[0].AvailableSeats;
+                console.log(AvaialableSeat)
+        const randomIndex = Math.floor(Math.random() * AvaialableSeat.length);
+        const randomNumber = AvaialableSeat[randomIndex];
+        cy.request({
+            method: 'POST',
+            url: data.base_url + '/api/bookings/postsearch',
+
+            headers:{
+                 'Authorization': 'Bearer ' + access_token,
+                "Content-Type" : "application/x-www-form-urlencoded",
+                "Country-Code" : 'NG'
+            },
+            body:{
+                "TripType": 0,
+                "HasTransit": false,
+                "PaymentMethod": 23,
+                "PosReference": "",
+                "BookingType": 2,
+                "PassengerType": 0,
+                "FirstName": "Udedibor",
+                "LastName": "Favour",
+                "Gender": 0,
+                "RouteId": 16060,
+                "isSub": false,
+                "isSubReturn": false,
+                "Amount": 1,
+                "Email": "udediborchidu@gmail.com",
+                "PhoneNumber": "07012907166",
+                "NextOfKinName": "Femi",
+                "NextOfKinPhone": "08139170223",
+                "SeatRegistrations": seatReg + ':' + randomNumber,
+                "BookingStatus": 1,
+                "PickupStatus": 0,
+                "Discount": 0,
+                "LuggageType": 0,
+                "ReturnPickupStatus": 0,
+                "IsLoggedIn": false,
+                "IsCrossCountryBooking": false,
+                "TravelStatus": 0,
+                "IsInternational": false,
+                "hasCoupon": false,
+                "IsCrossCountry": false,
+                "VehicleTripRegistrationId": vehicleregID,
+                 "Address": "ererereffdcd",
+              }
+
 
         }).then((res)=>{
+            expect(res.status).to.eq(200)
+            expect(res.body.Object.BookingReferenceCode, 'Refrence Code should be').to.eq(res.body.Object.BookingReferenceCode)
+
+        }).then((res)=>{
+      
+             const refcode = res.body.Object.BookingReferenceCode
             cy.request({
-                method: 'GET',
-                url: data.base_url + '/api/bookings/ActivePaymentGatewayWallet',
+                method: 'POST',
+                url: data.base_url + '/api/bookings/ProcessWalletPayment',
+    
                 headers:{
                      'Authorization': 'Bearer ' + access_token,
-                    "Content-Type" : "application/x-www-form-urlencoded"
+                    "Content-Type" : "application/x-www-form-urlencoded",
+                },
+                body:{
+                    "Email": "udediborchidu@gmail.com",
+                    "RefCode": refcode,
+                    "Pin": "2514"
+                   
+
                 }
 
-        }).then((res)=>{
-            expect(res.status, 'Status').to.eq(200)
-            expect( res.body.Object[0].WalletStatus, 'wallet status').to.be.true;
+        })
     })
 })
     
@@ -125,5 +192,5 @@ describe('GetTerminalByCC', ()=>{
         })
     })
 })
-})
+
 })

@@ -28,3 +28,5 @@
 /// <reference types="@shelex/cypress-allure-plugin" />
 
 import 'cypress-mailosaur'
+import {MailSlurp} from "mailslurp-client";
+
