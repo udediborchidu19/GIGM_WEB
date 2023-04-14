@@ -2,13 +2,13 @@ pipeline{
     agent any
     parameters{
         
-             strings(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script in the jenkins file")
+             string(name: 'SPEC', defaultValue: "cypress/e2e/**/**", description: "Enter the script in the jenkins file")
         choice(name: 'BROWSER', choices:['chrome', 'edge', 'firefox'], description: "Choose browser type")
         
     }
     options{
         
-            ansiColor('xterm')
+            // ansiColor('xterm')
         
     }
     stages{
