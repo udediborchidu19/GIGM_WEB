@@ -21,7 +21,7 @@ pipeline{
         stage('Testing'){
             steps{
                 bat 'npm i'
-                bat 'npx cypress run --env allure=true --headed'
+                bat 'npx cypress run --browser $(BROWSER) --spec $(SPEC)'
             }
         }
         stage('Deploying'){
