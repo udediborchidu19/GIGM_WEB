@@ -22,7 +22,8 @@ pipeline{
             steps{
                 bat 'npm i'
                 // bat 'npx cypress run --browser $(BROWSER) --spec $(SPEC)'
-                bat 'npx cypress run --browser chrome --spec cypress/e2e/**'
+                // bat 'npx cypress run --browser chrome --spec cypress/e2e/**'
+                bat 'npx cypress run --browser ${BROWSER} --spec ${SPEC}'
             }
         }
         stage('Deploying'){
