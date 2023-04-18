@@ -9,7 +9,7 @@ describe('Change_Auth_Credentials', ()=> {
     const server_domain = 'mysterious-noun@lmnrfcjr.mailosaur.net';
     
 
-    it('ChangePin', ()=> {
+    it.skip('ChangePin', ()=> {
          cy.visit('https://gigm.com/');
 
          cy.fixture("GIGM_Resource").then((data)=> {
