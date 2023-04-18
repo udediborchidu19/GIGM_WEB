@@ -6,6 +6,8 @@
   "scripts": {
     "allure:report": "allure generate allure-results--clean -o allure-report",
     "test": "npx cypress run --env allure=true --headed",
+    "cypress:chrome": "cypress run --browser chrome --spec cypress/e2e/** ",
+    "cypress:edge": "cypress run --browser edge --spec cypress/e2e/**",
     "report": "npx allure generate allure-results --clean -o docs"
   },
   "author": "Favour Udedibor",
