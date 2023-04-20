@@ -62,7 +62,7 @@ describe('GetTerminalByCC', ()=>{
                         "TripType": 0,
                         "DepartureTerminalId": 29,
                         "DestinationTerminalId": destinationTerId,
-                        "DepartureDate": "2023-04-23T10:28:30.844Z",
+                        "DepartureDate": "2023-04-26T10:28:30.844Z",
                         "ReturnDate": "2023-04-01T10:28:30.844Z",
                         "NumberOfAdults": 1,
                         "NumberOfChildren": 0,
