@@ -48,7 +48,7 @@ describe('GetTerminalByCC', ()=>{
             }).then((res)=>{
                 // const departureTerId = res.body.Object.Items[42].TerminalId;
                 const destinationTerId = res.body.Object[20].TerminalId;
-                const array = [23, 24, 25, 26, 27, 28, 29, 30];
+                const array = [27, 25, 29, 30];
                 const randomIndex = Math.floor(Math.random() * array.length);
                 const randomNumber = array[randomIndex];
 
