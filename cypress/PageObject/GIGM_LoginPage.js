@@ -166,7 +166,7 @@ class Login {
     getCalenderDay()
     {
         // cy.get('.react-datepicker__day').not('[disabled]').last()
-         cy.xpath('//*[@id="content1"]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/div[2]/div[5]/div[4]')
+         cy.xpath('//*[@id="content1"]/div[3]/div[1]/div[2]/div[2]/div/div/div[2]/div[2]/div[5]/div[6]')
         .click({force: true, multiple: true})
         //  cy.get('.react-datepicker__day').not('[disabled]')
         // .its('length')
