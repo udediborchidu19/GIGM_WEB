@@ -50,7 +50,7 @@ describe('GetTerminalByCC', ()=>{
             }).then((res)=>{
                 // const departureTerId = res.body.Object.Items[42].TerminalId;
                 const destinationTerId = res.body.Object[20].TerminalId;
-                const array = [27, 29];
+                const array = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
                 const randomIndex = Math.floor(Math.random() * array.length);
                 const randomNumber = array[randomIndex];
 
@@ -69,7 +69,7 @@ describe('GetTerminalByCC', ()=>{
                         "TripType": 0,
                         "DepartureTerminalId": 29,
                         "DestinationTerminalId": destinationTerId,
-                        "DepartureDate": "2023-04-" + randomNumber + "T10:28:30.844Z",
+                        "DepartureDate": "2023-05-" + randomNumber + "T10:28:30.844Z",
                         "ReturnDate": "2023-04-01T10:28:30.844Z",
                         "NumberOfAdults": 1,
                         "NumberOfChildren": 0,
