@@ -44,8 +44,8 @@ describe('LoginT', ()=> {
             pa.viewSeat(); //click to view seat position
             pa.selectSeatPosition(); // select a seat position
             pa.continueToPassengerDetailBtn(); //click to view passenger detail
-            pa.inputNextofKinsName() //type into field next of kins name
-            pa.inputNextofKinsNumber(); //type into field next of kins number
+            pa.inputNextofKinsName(data.nextofKins) //type into field next of kins name
+            pa.inputNextofKinsNumber(data.phonenumber); //type into field next of kins number
             pa.PayTobeEnabled() //Pay button to be visible
             pa.PaySelected()
             pa.PaymentMethod();

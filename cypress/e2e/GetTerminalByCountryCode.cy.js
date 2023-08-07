@@ -20,10 +20,10 @@ describe('GetTerminalByCC', ()=>{
                 
             }).then((res)=>{
                 expect(res.status).to.eq(200)
-                expect(res.body.Object.Items[42].TerminalName).to.be.eq('Lagos => Jibowu')
-                expect(res.body.Object.Items[42].Latitude).to.be.eq(6.518806)
-                expect(res.body.Object.Items[42].Longitude).to.be.eq(3.367547)
-                expect(res.body.Object.Items[42].TerminalId).to.be.eq(29)
+                expect(res.body.Object.Items[46].TerminalName).to.be.eq('Lagos => Jibowu')
+                expect(res.body.Object.Items[46].Latitude).to.be.eq(6.518806)
+                expect(res.body.Object.Items[46].Longitude).to.be.eq(3.367547)
+                expect(res.body.Object.Items[46].TerminalId).to.be.eq(29)
                 expect(res.body.Object.Items).to.be.eq(res.body.Object.Items)
                 expect(res.body.ShortDescription, 'ShortDescription').to.be.eq("SUCCESS")
 
@@ -31,7 +31,7 @@ describe('GetTerminalByCC', ()=>{
         
         
             }).then((res) =>{
-                const departureId = res.body.Object.Items[42].TerminalId;
+                const departureId = res.body.Object.Items[46].TerminalId;
                 cy.log(departureId);
                 cy.request({
                     method: 'GET',
@@ -43,14 +43,14 @@ describe('GetTerminalByCC', ()=>{
                     
                 }).then((res)=>{
                     expect(res.status).to.eq(200)
-                    expect(res.body.Object[20].TerminalId).to.be.eq(72)
-                    expect(res.body.Object[20].TerminalName).to.be.eq("Enugu==>Nsukka")
+                    expect(res.body.Object[21].TerminalId).to.be.eq(72)
+                    expect(res.body.Object[21].TerminalName).to.be.eq("Enugu==>Nsukka")
                     expect(res.body.ShortDescription, 'ShortDescription').to.be.eq("SUCCESS")
 
             }).then((res)=>{
-                // const departureTerId = res.body.Object.Items[42].TerminalId;
+                // const departureTerId = res.body.Object.Items[46].TerminalId;
                 const destinationTerId = res.body.Object[20].TerminalId;
-                const array = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+                const array = [30, 31];
                 const randomIndex = Math.floor(Math.random() * array.length);
                 const randomNumber = array[randomIndex];
 

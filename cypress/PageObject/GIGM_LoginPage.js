@@ -3,7 +3,7 @@
 // import { random } from "cypress/types/lodash";
 
 class Login {
-    txtUsername = "input[placeholder='example@gmail.com']";
+    txtUsername = '//*[@id="root"]/div/div[4]/div[2]/div/div/div/div[2]/div[1]/input';
     txtPassword = "input[placeholder='Enter Your Password']";
     clickBn = "button[title='Sign In']";
     AcceptCookiess = "#rcc-confirm-button";
@@ -45,7 +45,7 @@ class Login {
 
 
     setUserName(username) {
-        cy.get(this.txtUsername).type(username);
+        cy.xpath(this.txtUsername).type(username);
     }
 
     setPassword(password) {
@@ -211,14 +211,14 @@ class Login {
         cy.get('.rodal-fade-enter > .rodal-dialog > [style="overflow: hidden; height: 500px;"] > .modContainer > [style="margin-top: 10px;"] > .seats-select > :nth-child(3) > .col-sm-12 > :nth-child(11) > .col-md-12 > .Button_Wrap').click({force:true})
     }
 
-    inputNextofKinsName()
+    inputNextofKinsName(nextofKins)
     {
-        cy.get('input[placeholder="Enter Next of Kin name"]').type('godwin', {force:true});
+        cy.xpath('//*[@id="root"]/div/section/div/div[2]/div[1]/ol/li[3]/section/div[2]/div[1]/input').type(nextofKins, {force:true});
     }
 
-    inputNextofKinsNumber()
+    inputNextofKinsNumber(phonenumber)
     {
-        cy.get('input[placeholder="Enter next of kin number"]').type('08138988887', {force:true});
+        cy.xpath('//*[@id="root"]/div/section/div/div[2]/div[1]/ol/li[3]/section/div[2]/div[2]/input').type(phonenumber, {force:true});
     }
 
     PayTobeEnabled()
